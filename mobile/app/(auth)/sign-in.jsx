@@ -12,9 +12,9 @@ const SignInScreen = () => {
   const router = useRouter();
   const { signIn, setActive, isLoaded } = useSignIn();
   const [ email, setEmail ] = useState("");
-  const [ password, setpassword ] = useState("");
+  const [ password, setPassword ] = useState("");
   const [ showPassword, setShowPassword ] = useState("");
-  const [ loading, setloading ] = useState(false);
+  const [ loading, setLoading ] = useState(false);
 
   const handleSignIn = async () => {
     if(!email || !password) {
@@ -24,7 +24,7 @@ const SignInScreen = () => {
 
     if(!isLoaded) return;
 
-    setloading(true)
+    setLoading(true)
 
     try {
       const signInAttempt = await signIn.create({ identifier: email, password })
@@ -39,7 +39,7 @@ const SignInScreen = () => {
       Alert.alert("Error",error.errors?.[0]?.messsage || "Sign in failed.");
       console.error(JSON.stringify(error, null, 2));
     } finally{
-      setloading(false)
+      setLoading(false)
     }
   }
 
@@ -84,7 +84,7 @@ const SignInScreen = () => {
                 placeholder="Enter Password"
                 placeholderTextColor={COLORS.textLight}
                 value={password}
-                onChangeText={setpassword}
+                onChangeText={setPassword}
                 secureTextEntry={!showPassword}
                 autoCapitalize="none"
               />
